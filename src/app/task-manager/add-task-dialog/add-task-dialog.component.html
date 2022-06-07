@@ -1,0 +1,26 @@
+
+
+<div [formGroup]="taskManagerAddFormGroup" class="add-task-dialog-container">
+    <h1>{{title}}</h1>
+    <tr>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Name</mat-label>
+            <input matInput formControlName="name" placeholder="Task Name">
+            <mat-error *ngIf="taskManagerAddFormGroup.controls['name'].hasError('required')">Task Name is required</mat-error>
+        </mat-form-field>
+    </tr>
+    
+    <tr>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Description</mat-label>
+            <input matInput formControlName="description" placeholder="Task Description">
+            <mat-error *ngIf="taskManagerAddFormGroup.controls['description'].hasError('required')">Task Description is required</mat-error>
+        </mat-form-field>
+    </tr>
+    
+
+    <div class="btn-task-dialog">
+        <button mat-button [disabled]="taskManagerAddFormGroup.invalid" (click)="SaveAddData()" mat-stroked-button color="primary">Save</button>
+        <button mat-button (click)="CancelAddTask()">Cancel</button>
+    </div>
+</div>

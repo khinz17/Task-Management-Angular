@@ -1,0 +1,37 @@
+<div [formGroup]="taskManagerEditFormGroup" class="task-dialog-container">
+    <h1>{{title}}</h1>
+    <tr>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Name</mat-label>
+            <input matInput formControlName="name" placeholder="Task Name">
+            <mat-error *ngIf="taskManagerEditFormGroup.controls['name'].hasError('required')">Task Name is required</mat-error>
+        </mat-form-field>
+    </tr>
+    
+    <tr>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Description</mat-label>
+            <input matInput formControlName="description" placeholder="Task Description">
+            <mat-error *ngIf="taskManagerEditFormGroup.controls['description'].hasError('required')">Task Description is required</mat-error>
+        </mat-form-field>
+    </tr>
+    
+    <tr>
+        <mat-radio-group formControlName="status" aria-label="Select an option">
+            <mat-radio-button value="1">New</mat-radio-button>
+            <mat-radio-button value="2">Progress</mat-radio-button>
+            <mat-radio-button value="3">Complete</mat-radio-button>
+        </mat-radio-group>
+    </tr>
+    
+    <!-- <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select> -->
+
+    <div class="btn-task-dialog">
+        <button mat-button [disabled]="taskManagerEditFormGroup.invalid" (click)="save()" mat-stroked-button color="primary">Save</button>
+        <button mat-button (click)="cancel()">Cancel</button>
+    </div>
+</div>
